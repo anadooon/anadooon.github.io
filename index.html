@@ -1,12 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Anadon</title>
+    <title>Portfolio</title>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <!-- Fuentes modernas (Inter para lectura, Space Mono para código/detalles) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Configuración Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Tu hoja de estilos personalizada -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Hello World</h1>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#0a0a0a] dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col font-sans">
+
+    <!-- Navegación -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-[#0a0a0a]/70 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-mono font-bold text-xl tracking-tight">
+                <span class="text-blue-600 dark:text-blue-400">~/</span>portfolio
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <!-- Botón Idioma -->
+                <button id="lang-toggle" class="font-mono text-sm px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition">
+                    EN
+                </button>
+                <!-- Botón Tema -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition" aria-label="Toggle Theme">
+                    <!-- Icono Sol (se muestra en modo oscuro) -->
+                    <svg id="icon-sun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <!-- Icono Luna (se muestra en modo claro) -->
+                    <svg id="icon-moon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-lang="hero-title">
+            Desarrollador Web <br>& <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-500">Maker</span>.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-8 leading-relaxed" data-lang="hero-desc">
+            Técnico en SMR cursando el Grado Superior en DAW (Desarrollo de Aplicaciones Web) en Zaragoza. 
+            Me dedico a crear software eficiente y diseño hardware funcional, uniendo el código con la fabricación digital.
+        </p>
+        <div class="flex gap-4 font-mono text-sm">
+            <a href="#proyectos" class="px-6 py-3 bg-gray-900 text-white dark:bg-white dark:text-gray-900 rounded-lg hover:scale-105 transition-transform shadow-lg" data-lang="btn-projects">VER_PROYECTOS</a>
+            <a href="https://github.com/tu-usuario" target="_blank" class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">GITHUB</a>
+        </div>
+    </header>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="max-w-5xl mx-auto px-6 py-16 w-full">
+        <h2 class="text-3xl font-bold mb-10 font-mono flex items-center gap-4">
+            <span class="w-8 h-[2px] bg-blue-500"></span> 
+            <span data-lang="section-projects">PROYECTOS</span>
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Proyecto 1 (Software) -->
+            <div class="project-card bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                <div class="aspect-video bg-gray-100 dark:bg-gray-900 relative">
+                    <img src="img/calc-3d.jpg" alt="Calculadora 3D" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2" data-lang="p1-title">Calculadora de Costes 3D</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-lang="p1-desc">
+                        Herramienta web moderna para calcular presupuestos de piezas impresas en 3D en base al peso del material y tiempo de máquina.
+                    </p>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">HTML</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 (Hardware/CAD) -->
+            <div class="project-card bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                <div class="aspect-video bg-gray-100 dark:bg-gray-900 relative">
+                    <img src="img/altavoces.jpg" alt="Monitores Acústicos" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2" data-lang="p2-title">Monitores de Escritorio Pasivos</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-lang="p2-desc">
+                        Diseño paramétrico y ensamblaje de recintos acústicos trapezoidales impresos en 3D para woofers de 120mm y tweeters de 20mm.
+                    </p>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">OpenSCAD</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">Fusion</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">Bambu Lab</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 (Data) -->
+            <div class="project-card bg-white dark:bg-[#121212] border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all md:col-span-2 flex flex-col md:flex-row">
+                <div class="w-full md:w-1/2 aspect-video md:aspect-auto bg-gray-100 dark:bg-gray-900 relative">
+                    <img src="img/db-project.jpg" alt="Base de datos" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 w-full md:w-1/2 flex flex-col justify-center">
+                    <h3 class="text-xl font-bold mb-2" data-lang="p3-title">Gestión de BBDD Orientada a Objetos</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4" data-lang="p3-desc">
+                        Desarrollo backend implementando consultas OID, filtrado por criterios en NeoDatis ODB y funciones PL/SQL con manejo de excepciones.
+                    </p>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">Java</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">PL/SQL</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-blue-600 dark:text-blue-400">NeoDatis ODB</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section class="max-w-5xl mx-auto px-6 py-16 mb-10 w-full">
+        <div class="bg-gray-100 dark:bg-[#121212] rounded-3xl p-8 md:p-12 border border-gray-200 dark:border-gray-800">
+            <h2 class="text-2xl font-bold mb-6 font-mono" data-lang="about-title">SOBRE_MÍ</h2>
+            <div class="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl">
+                <p data-lang="about-1">
+                    Mi base técnica comenzó con el grado medio de SMR y ahora sigo profundizando en el desarrollo de software a través del DAW. Me gusta entender cómo funcionan las cosas desde la infraestructura hasta el frontend.
+                </p>
+                <p data-lang="about-2">
+                    Fuera de la programación, dedico mucho tiempo al diseño 3D y la investigación de materiales de impresión (como PLA, PETG, ABS o ASA). Además, soy guitarrista en "descovertura", una banda de covers de rock, donde configuro mis propios presets y pedaleras.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-gray-200 dark:border-gray-800 text-center py-8">
+        <p class="text-sm text-gray-500 font-mono" data-lang="footer-text">
+            © 2026 // Construido desde cero.
+        </p>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
